@@ -3,16 +3,24 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      clicks: 0
+    }
+  };
+
+  handleClick = () => { 
+    this.setState({
+      clicks: this.state.clicks + 2
+    });
+    
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <h1 onClick={()=> this.handleClick()}> Clicking here you can increment this number {this.state.clicks}</h1>
       </div>
     );
   }
