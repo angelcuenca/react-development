@@ -15,7 +15,7 @@ class App extends Component {
       clicks: this.state.clicks + 2
     });
     
-  }
+  };
 
   render() {
     return (
