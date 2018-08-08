@@ -2,5 +2,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Created to implement incredible features from ReactJS.
 * Components
+* JXS
 
 Developed by: Angel Cuenca
