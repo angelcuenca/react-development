@@ -1,27 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import "./bootstrap.min.css";
+
+function Hero(){
+  return (<div className="row">
+      <div className="jumbotron col-10 offset-1">
+        <h1>Quiz</h1>
+        <p>Select the sport</p> 
+      </div>
+    </div>
+    );
+}
+
+function Turn(){
+  return (<div />);
+}
+
+function Continue(){
+  return (<div />);
+}
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      clicks: 0
+     
     }
-  };
-
-  handleClick = () => { 
-    this.setState({
-      clicks: this.state.clicks + 2
-    });
-    
   };
 
   render() {
     return (
-      <div>
-        <h1 onClick={()=> this.handleClick()}> Clicking here you can increment this number {this.state.clicks}</h1>
+      <div className="container-fluid">
+        <Hero />
+        <Turn />
+        <Continue />
       </div>
     );
   }
