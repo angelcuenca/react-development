@@ -20,6 +20,17 @@ function Continue(){
   return (<div />);
 }
 
+function Footer(){
+  return (<div id="footer" className="row">
+          <div className="col-12">
+            <p className="text-muted credit">
+              All sports images are from <a href="https://www.google.com">Google</a>
+            </p>
+          </div>
+        </div>
+    );
+}
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -34,6 +45,7 @@ class App extends Component {
         <Hero />
         <Turn />
         <Continue />
+        <Footer />
       </div>
     );
   }
