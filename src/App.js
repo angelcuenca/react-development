@@ -12,13 +12,20 @@ function Hero(){
     );
 }
 
+function Sport({title}){
+  return (<div className="answer">
+            <h4>{title}</h4>  
+          </div>
+        );
+}
+
 function Turn({athlete, sports}){
   return (<div className="row turn" style={{backgroundColor: "white"}}>
             <div className="col-4 offset-1">
               <img src={athlete.imageUrl} className="athleteimage" alt="Athlete"></img>
             </div>
             <div className="col-6">
-              {sports.map((title) => <p>{title}</p>)}
+              {sports.map((title) =>  <Sport title={title} key={title} /> )}
             </div>
           </div>);
 }
