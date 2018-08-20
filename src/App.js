@@ -6,19 +6,19 @@ function Hero(){
   return (<div className="row">
       <div className="jumbotron col-10 offset-1">
         <h1>Quiz</h1>
-        <p>Select the sport</p> 
+        <p>Select the correct athlete</p> 
       </div>
     </div>
     );
 }
 
-function Turn({author, books}){
+function Turn({athlete, sports}){
   return (<div className="row turn" style={{backgroundColor: "white"}}>
             <div className="col-4 offset-1">
-              <img src={author.imageUrl} className="authorimage" alt="Author"></img>
+              <img src={athlete.imageUrl} className="athleteimage" alt="Athlete"></img>
             </div>
             <div className="col-6">
-              {books.map((title) => <p>{title}</p>)}
+              {sports.map((title) => <p>{title}</p>)}
             </div>
           </div>);
 }
@@ -50,7 +50,7 @@ class App extends Component {
     return (
       <div className="container-fluid">
         <Hero />
-        <Turn />
+        <Turn {...this.props.data.turnData} />
         <Continue />
         <Footer />
       </div>
