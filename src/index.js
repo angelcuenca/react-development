@@ -23,6 +23,12 @@ const athletes = [
         imageUrl: 'images/mayweather.jpg',
         imageSource: 'Wikimedia Commons',
         sports: ['Box']
+    },
+    {
+        name: 'LeBron James',
+        imageUrl: 'images/lebron.jpg',
+        imageSource: 'Wikimedia Commons',
+        sports: ['LeBron James']
     }
 ];
 
