@@ -9,19 +9,19 @@ const athletes = [
     {
         name: 'Roger Federer',
         imageUrl: 'images/federer.jpg',
-        imageSource: 'Wikimedi Commons',
+        imageSource: 'Wikimedia Commons',
         sports: ['Tennis']
     },
     {
         name: 'Aaron Rodgers',
         imageUrl: 'images/rodgers.jpg',
-        imageSource: 'Wikimedi Commons',
+        imageSource: 'Wikimedia Commons',
         sports: ['NFL']
     },
     {
         name: 'Floyd Mayweather',
         imageUrl: 'images/mayweather.jpg',
-        imageSource: 'Wikimedi Commons',
+        imageSource: 'Wikimedia Commons',
         sports: ['Box']
     }
 ];
