@@ -28,7 +28,7 @@ const athletes = [
         name: 'LeBron James',
         imageUrl: 'images/lebron.jpg',
         imageSource: 'Wikimedia Commons',
-        sports: ['LeBron James']
+        sports: ['Basketball']
     }
 ];
 
@@ -48,8 +48,19 @@ function getTurnData(athletes){
 }
 
 const state = {
-    turnData: getTurnData(athletes)
+    turnData: getTurnData(athletes),
+    highlight: 'correct'
 };
 
-ReactDOM.render(<App data={state} />, document.getElementById('root'));
+function onAnswerSelected(answer) {
+    const isCorrect = state.turnData.athlete.sports.some((sport) => sport === answer);
+    state.highlight = isCorrect ? 'correct' : 'wrong';
+    render();
+}
+
+function render(){
+    ReactDOM.render(<App data={state} highlight={state.highlight} onAnswerSelected={onAnswerSelected} />, document.getElementById('root'));
+}
+
+render();
 registerServiceWorker();

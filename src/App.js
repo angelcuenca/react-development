@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import PropTypes from 'prop-types';
 import "./bootstrap.min.css";
 
 function Hero(){
@@ -12,23 +13,43 @@ function Hero(){
     );
 }
 
-function Sport({title}){
-  return (<div className="answer">
+function Sport({title, onClick}){
+  return (<div className="answer" onClick={() => {onClick(title);}} >
             <h4>{title}</h4>  
           </div>
         );
 }
 
-function Turn({athlete, sports}){
-  return (<div className="row turn" style={{backgroundColor: "white"}}>
+function Turn({athlete, sports, highlight, onAnswerSelected}){
+  function highlightToBgColor(highlight){
+    const mapping = {
+      'none' : '',
+      'correct' : 'green',
+      'wrong' : 'red'
+    }
+    return mapping[highlight];
+  }
+
+  return (<div className="row turn" style={{backgroundColor: highlightToBgColor(highlight)}}>
             <div className="col-4 offset-1">
               <img src={athlete.imageUrl} className="athleteimage" alt="Athlete"></img>
             </div>
             <div className="col-6">
-              {sports.map((title) =>  <Sport title={title} key={title} /> )}
+              {sports.map((title) =>  <Sport title={title} key={title} onClick={onAnswerSelected} /> )}
             </div>
           </div>);
 }
+Turn.propTypes = {
+  athlete: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    imageSource: PropTypes.string.isRequired,
+    sports: PropTypes.arrayOf(PropTypes.string).isRequired
+  }),
+  sports: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onAnswerSelected: PropTypes.func.isRequired,
+  highlight: PropTypes.string.isRequired
+};
 
 function Continue(){
   return (<div />);
@@ -57,7 +78,7 @@ class App extends Component {
     return (
       <div className="container-fluid">
         <Hero />
-        <Turn {...this.props.data.turnData} />
+        <Turn {...this.props.data.turnData} highlight={this.props.highlight} onAnswerSelected={this.props.onAnswerSelected} />
         <Continue />
         <Footer />
       </div>
