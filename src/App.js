@@ -13,14 +13,14 @@ function Hero(){
     );
 }
 
-function Sport({title, onClick}){
+function Sport({title, onClick}){ 
   return (<div className="answer" onClick={() => {onClick(title);}} >
             <h4>{title}</h4>  
           </div>
         );
 }
 
-function Turn({athlete, sports, highlight, onAnswerSelected}){
+function Turn({athlete, sports, highlight, onAnswerSelected}){ 
   function highlightToBgColor(highlight){
     const mapping = {
       'none' : '',
