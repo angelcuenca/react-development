@@ -35,7 +35,7 @@ function Turn({athlete, sports, highlight, onAnswerSelected}){
               <img src={athlete.imageUrl} className="athleteimage" alt="Athlete"></img>
             </div>
             <div className="col-6">
-              {sports.map((title) =>  <Sport title={title} key={title} onClick={onAnswerSelected} /> )}
+              {sports.map((title) => <Sport title={title} key={title} onClick={onAnswerSelected} /> )}
             </div>
           </div>);
 }
