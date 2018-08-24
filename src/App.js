@@ -13,29 +13,38 @@ function Hero(){
     );
 }
 
-function Sport({title, onClick}){ 
-  return (<div className="answer" onClick={() => {onClick(title);}} >
-            <h4>{title}</h4>  
-          </div>
-        );
-}
-
-function Turn({athlete, sports, highlight, onAnswerSelected}){ 
-  function highlightToBgColor(highlight){
+function Sport({title, onClick, answerClicked, highlight}){
+  function highlightToBgColor(highlight){    
     const mapping = {
       'none' : '',
       'correct' : 'green',
       'wrong' : 'red'
     }
-    return mapping[highlight];
+    if( answerClicked === title){
+      return mapping[highlight];
+    }else{
+      return mapping['none'];
+    }    
   }
 
-  return (<div className="row turn" style={{backgroundColor: highlightToBgColor(highlight)}}>
+  return (<div className="answer" style={{backgroundColor: highlightToBgColor(highlight)}} onClick={() => {onClick(title);}} >
+            <h4>{title}</h4>  
+          </div>
+  );
+}
+
+function Turn({athlete, answerClicked, sports, highlight, onAnswerSelected}){
+  
+  return (<div className="row turn">
             <div className="col-4 offset-1">
               <img src={athlete.imageUrl} className="athleteimage" alt="Athlete"></img>
             </div>
             <div className="col-6">
-              {sports.map((title) => <Sport title={title} key={title} onClick={onAnswerSelected} /> )}
+              {sports.map((title) => <Sport title={title} 
+                                            key={title} 
+                                            onClick={onAnswerSelected} 
+                                            answerClicked={answerClicked}
+                                            highlight={highlight} /> )}
             </div>
           </div>);
 }
@@ -78,7 +87,10 @@ class App extends Component {
     return (
       <div className="container-fluid">
         <Hero />
-        <Turn {...this.props.data.turnData} highlight={this.props.highlight} onAnswerSelected={this.props.onAnswerSelected} />
+        <Turn {...this.props.data.turnData} 
+              answerClicked={this.props.answerClicked} 
+              highlight={this.props.highlight} 
+              onAnswerSelected={this.props.onAnswerSelected} />
         <Continue />
         <Footer />
       </div>

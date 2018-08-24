@@ -49,17 +49,19 @@ function getTurnData(athletes){
 
 const state = {
     turnData: getTurnData(athletes),
-    highlight: 'correct'
+    highlight: '',
+    answerClicked: ''
 };
 
 function onAnswerSelected(answer) {
     const isCorrect = state.turnData.athlete.sports.some((sport) => sport === answer);
     state.highlight = isCorrect ? 'correct' : 'wrong';
+    state.answerClicked = answer;
     render();
 }
 
 function render(){
-    ReactDOM.render(<App data={state} highlight={state.highlight} onAnswerSelected={onAnswerSelected} />, document.getElementById('root'));
+    ReactDOM.render(<App data={state} answerClicked={state.answerClicked} highlight={state.highlight} onAnswerSelected={onAnswerSelected} />, document.getElementById('root'));
 }
 
 render();
